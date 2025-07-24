@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard - LF-Test</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        body {
+            background: #0b1321;
+            color: #fff;
+            font-family: 'Montserrat', Arial, sans-serif;
+            margin: 0;
+            min-height: 100vh;
+            box-sizing: border-box;
+            width: 100vw;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        h1 {
+            width: 100%;
+            text-align: center;
+            margin: 30px 0 22px 0;
+            font-size: 24px;
+            font-weight: 400;
+            letter-spacing: 2px;
+            word-break: break-word;
+        }
+        .container {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: flex-start;
+            gap: 20px;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            box-sizing: border-box;
+            padding: 0 0.5rem;
+        }
+        .card {
+            background: #0a0c23;
+            border-radius: 16px;
+            width: 300px;
+            max-width: 370px;
+            min-width: 220px;
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s;
+        }
+        .card:hover {
+            transform: translateY(-4px);
+            cursor: pointer;
+        }
+        .card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            display: block;
+        }
+        .card-body {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 16px;
+        }
+        .card h3 {
+            margin: 0 0 10px;
+            font-size: 20px;
+            color: #00bfff;
+            text-transform: uppercase;
+        }
+        .card p {
+            font-size: 14px;
+            color: #e0e0e0;
+            flex-grow: 1;
+            font-style: italic;
+        }
+        .card-link {
+            text-decoration: none;
+            color: inherit;
+        }
+        /* MOBILE: cards um abaixo do outro, tudo centralizado */
+        @media (max-width: 700px) {
+            body {
+                padding: 0;
+                width: 100vw;
+                min-width: 100vw;
+            }
+            h1 {
+                font-size: 18px;
+                margin-top: 20px;
+                margin-bottom: 16px;
+                padding: 0 2vw;
+            }
+            .container {
+                flex-direction: column;
+                align-items: center;
+                justify-content: flex-start;
+                gap: 16px;
+                width: 100vw;
+                max-width: 100vw;
+                min-width: 100vw;
+                margin: 0;
+                padding: 0;
+            }
+            .card {
+                width: 95vw;
+                max-width: 370px;
+                min-width: unset;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>BEM-VINDO AO SEU PAINEL DE TESTES</h1>
+    <div class="container">
+
+        <a href="https://tally.so/r/wgPZW1" target="_blank" class="card-link">
+            <div class="card">
+                <img src="{{ url_for('static', filename='dashboard_images/gatilhos_emocionais.png') }}" alt="Gatilhos Emocionais">
+                <div class="card-body">
+                    <h3>GATILHOS EMOCIONAIS</h3>
+                    <p>Teste para identificar os principais gatilhos emocionais do seu perfil, revelando padrões internos que influenciam seus comportamentos e relações.</p>
+                </div>
+            </div>
+        </a>
+
+        <a href="https://tally.so/r/wMgkoA" target="_blank" class="card-link">
+            <div class="card">
+                <img src="{{ url_for('static', filename='dashboard_images/teste_geracional.png') }}" alt="Teste Geracional">
+                <div class="card-body">
+                    <h3>TESTE GERACIONAL</h3>
+                    <p>Responda ao nosso teste geracional e receba uma análise completa sobre a sua geração e seus traços comportamentais!</p>
+                </div>
+            </div>
+        </a>
+
+        <a href="https://tally.so/r/mDyMxj" target="_blank" class="card-link">
+            <div class="card">
+                <img src="{{ url_for('static', filename='dashboard_images/qual_geracao.png') }}" alt="De qual geração você é?">
+                <div class="card-body">
+                    <h3>DE QUAL GERAÇÃO VOCÊ É?</h3>
+                    <p>Responda ao formulário e descubra a qual geração você pertence — e quais características de outras gerações também estão presentes em você!</p>
+                </div>
+            </div>
+        </a>
+
+    </div>
+</body>
+</html>

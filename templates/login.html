@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Login - LF-Test</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script>
+        function mascaraCPF(input) {
+            let v = input.value.replace(/\D/g, '');
+            if (v.length > 11) v = v.slice(0, 11);
+            v = v.replace(/(\d{3})(\d)/, '$1.$2');
+            v = v.replace(/(\d{3})(\d)/, '$1.$2');
+            v = v.replace(/(\d{3})(\d{1,2})$/, '$1-$2');
+            input.value = v;
+        }
+    </script>
+    <style>
+        body, html {
+            min-height: 100vh;
+            margin: 0;
+            font-family: 'Montserrat', Arial, sans-serif;
+            background: #0b1321;
+        }
+
+        .background {
+            min-height: 100vh;
+            width: 100vw;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #0b1321;
+        }
+
+        .login-card {
+            background: #0a0c23;
+            border-radius: 24px;
+            box-shadow: 0 4px 32px rgba(30,40,130,0.23), 0 1.5px 6px rgba(0,0,0,0.10);
+            padding: 40px 32px 32px 32px;
+            min-width: 300px;
+            max-width: 360px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 18px;
+            letter-spacing: 2px;
+        }
+
+        .lf {
+            color: #fff;
+            background: #0a0c23;
+            border-right: 3px solid #fff;
+            padding-right: 12px;
+        }
+
+        .testes {
+            color: #fff;
+            padding-left: 12px;
+            font-weight: 700;
+        }
+
+        h1 {
+            font-size: 27px;
+            font-weight: 400;
+            margin-bottom: 22px;
+            color: #fff;
+        }
+
+        form {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        label {
+            display: none;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 12px 16px;
+            margin-bottom: 10px;
+            border: 1px solid #ffffff55;
+            border-radius: 40px;
+            font-size: 16px;
+            background: transparent;
+            color: #fff;
+            outline: none;
+            box-sizing: border-box;
+        }
+
+        input::placeholder {
+            color: #bbb;
+            font-size: 15px;
+        }
+
+        input:focus {
+            border: 2px solid #00bfff;
+        }
+
+        .entrar,
+        .criar-cadastro,
+        .esqueceu-senha {
+            width: 100%;
+            padding: 12px 0;
+            background: transparent;
+            color: #fff;
+            border: 1px solid #ffd700;
+            border-radius: 40px;
+            font-size: 12px;
+            font-weight: normal;  /* Sem negrito */
+            cursor: pointer;
+            transition: background 0.2s, color 0.2s;
+            text-align: center;
+            text-decoration: none;
+            margin-top: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Deixa os dois botões embaixo lado a lado em telas maiores */
+        .botoes {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            gap: 14px;
+            margin-top: 14px;
+        }
+        .criar-cadastro,
+        .esqueceu-senha {
+            width: 48%;
+            min-width: 110px;
+            margin-top: 0;
+        }
+
+        /* Responsivo: em telas pequenas, botões um embaixo do outro */
+        @media (max-width: 400px) {
+            .botoes {
+                flex-direction: column;
+                gap: 10px;
+            }
+            .criar-cadastro,
+            .esqueceu-senha {
+                width: 100%;
+            }
+        }
+
+        .entrar:hover,
+        .criar-cadastro:hover,
+        .esqueceu-senha:hover {
+            background: #ffffff22;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div class="background">
+        <div class="login-card">
+            <div class="logo">
+                <span class="lf">LF</span>
+                <span class="testes">TESTES</span>
+            </div>
+            <h1>Login</h1>
+            <form method="post">
+                <input type="text" name="cpf" placeholder="CPF" required minlength="14" maxlength="14" oninput="mascaraCPF(this)">
+                <input type="password" name="senha" placeholder="Senha" required>
+
+                <button type="submit" class="entrar">ENTRAR</button>
+
+                <div class="botoes">
+                    <a href="{{ url_for('cadastro') }}" class="criar-cadastro">CRIAR CADASTRO</a>
+                    <a href="https://wa.me/5511959906865" target="_blank" class="esqueceu-senha">ESQUECEU A SENHA</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
