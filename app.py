@@ -18,6 +18,7 @@ def home():
 @app.route('/cadastro', methods=['GET', 'POST'])
 def cadastro():
     erros = []
+
     if request.method == 'POST':
         nome = request.form.get('nome', '').strip()
         cpf = request.form.get('cpf', '').strip()
@@ -61,12 +62,14 @@ def login():
     if request.method == 'POST':
         cpf = request.form['cpf']
         senha = request.form['senha']
+
         usuario = Usuario.query.filter_by(cpf=cpf, senha=senha).first()
 
         if usuario:
             return redirect(url_for('dashboard'))
         else:
             flash('CPF ou senha inválidos!', 'error')
+
     return render_template('login.html')
 
 @app.route('/dashboard')
@@ -79,7 +82,7 @@ def dashboard():
 def admin_login():
     if request.method == 'POST':
         senha = request.form.get('senha')
-        if senha == 'minhaSenhaForte123!':  # TROQUE POR UMA SENHA SÓ SUA!
+        if senha == 'minhaSenhaForte123!':  # Altere para a senha de admin desejada
             session['admin'] = True
             return redirect(url_for('admin_usuarios'))
         else:
